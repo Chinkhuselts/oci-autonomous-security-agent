@@ -45,11 +45,13 @@ Initialize the deployment to your OCI container registry:
 
 ```bash
 fn deploy --app thesis-app
+```
 ## 3. Inject the AI Brain
 Pass your Groq API key securely into the function's environment variables (do not hardcode this in your script!):
 
 ```bash
 fn config app thesis-app GROQ_API_KEY "gsk_your_api_key_here"
+```
 ## 🧠 Technical Challenges Solved (Methodology)
 Building a fully autonomous system required navigating several complex cloud mechanics:
 
@@ -58,7 +60,6 @@ IAM Cache Propagation: Mitigating the 3-5 minute global server replication delay
 URL Double-Encoding: Implementing urllib.parse.unquote() to prevent OCI SDK 404 BucketNotFound errors when processing file names containing spaces (e.g., %20).
 
 Sterile Container Authentication: Bypassing standard local environment variables by injecting API keys directly into the OCI Application configuration to resolve 401 Unauthorized API drops.
-
 ## 📝 License & Acknowledgments
 Developed as part of a Master's Thesis on Cloud Security and AI Automation.
 
