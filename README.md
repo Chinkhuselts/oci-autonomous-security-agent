@@ -60,7 +60,8 @@ To deploy this architecture, you will need:
 * A locally configured OCI CLI and Fn Project CLI.
 * A **Groq API Key** for LLM inference.
 * A **Grafana** instance connected to OCI Logging Analytics.
-
+## 🤖 Processes and Screenshots
+(Just before changing the Visibility)[docs/before-1.png]
 ## 🛠️ Deployment Guide
 
 ### 1. Configure IAM Policies
