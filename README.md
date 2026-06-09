@@ -14,7 +14,39 @@ Modern cloud environments generate thousands of alerts daily, creating severe al
 By hooking real-time OCI Event streams into a serverless Python function powered by Llama 3.1 (via the Groq API), the system autonomously intercepts uploaded files, evaluates them against security heuristics, and vaporizes malware before it can be executed—all without human intervention.
 
 ## 🏗️ Architecture Workflow
+```mermaid
+graph TD
+    %% Nodes
+    Hacker[User / Attacker]
+    Bucket[(OCI Object Storage Bucket)]
+    Event{OCI Event Rule}
+    Func[OCI Serverless Function<br/>Python SDK]
+    LLM((Groq API / Llama 3.1))
+    Grafana[Grafana Dashboard]
 
+    %% Flow
+    Hacker -->|1. Uploads File| Bucket
+    Bucket -->|2. Emits 'Object - Create'| Event
+    Event -->|3. Invokes via Trigger| Func
+    
+    Func -->|4a. Sends Event JSON Context| LLM
+    LLM -->|4b. Returns 'DELETE_OBJECT' Decision| Func
+    
+    Func -->|5. Executes SDK Hard Delete| Bucket
+    Func -->|6. Streams Live Telemetry| Grafana
+
+    %% Styling
+    classDef default fill:#f4f4f4,stroke:#333,stroke-width:2px;
+    classDef storage fill:#e1f5fe,stroke:#0288d1;
+    classDef compute fill:#fff3e0,stroke:#f57c00;
+    classDef ai fill:#e8f5e9,stroke:#388e3c;
+    classDef dashboard fill:#fce4ec,stroke:#c2185b;
+
+    class Bucket storage;
+    class Event,Func compute;
+    class LLM ai;
+    class Grafana dashboard;
+```
 1. **Detection (OCI Events):** A cloud bucket is monitored for `Object - Create` events.
 2. **Trigger (OCI Functions):** An event fires, instantly waking up a sterile, serverless Docker container running the Python security payload.
 3. **Evaluation (Groq / Llama 3.1):** The function parses the event JSON and sends the payload context to Llama 3.1, asking for a binary security decision (`ALLOW` or `DELETE_OBJECT`).
@@ -35,10 +67,8 @@ To deploy this architecture, you will need:
 The function requires strict Identity and Access Management (IAM) clearance to operate autonomously. Create a Dynamic Group with the specific OCID of your function:
 ```
 ALL {resource.id = 'ocid1.fnfunc.oc1...'}
-Grant the Dynamic Group the "Master Key" to manage object storage:
-
-```
-Allow dynamic-group thesis-function-group to manage object-family in tenancy
+# Grant the Dynamic Group the "Master Key" to manage object storage:
+# Allow dynamic-group thesis-function-group to manage object-family in tenancy
 ```
 ## 2. Deploy the Serverless Function
 Initialize the deployment to your OCI container registry:
