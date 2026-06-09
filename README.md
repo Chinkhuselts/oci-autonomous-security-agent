@@ -61,7 +61,10 @@ To deploy this architecture, you will need:
 * A **Groq API Key** for LLM inference.
 * A **Grafana** instance connected to OCI Logging Analytics.
 ## 🤖 Processes and Screenshots
-[Just before changing the Visibility](docs/before-1.png)
+![Just before changing the Visibility](docs/before-1.png)
+![Changing the Visibility](docs/process-1.png)
+![Just After changing the Visibility](docs/after-1.png)
+![Visualization](docs/grafana-1.png)
 ## 🛠️ Deployment Guide
 
 ### 1. Configure IAM Policies
