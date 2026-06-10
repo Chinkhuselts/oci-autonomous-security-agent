@@ -107,7 +107,7 @@ To deploy this architecture, you will need:
 
 ## 🤖 Processes and Screenshots
 
-*Add screenshots, architecture diagrams, and remediation workflow demonstrations here.*
+(before)[docs/before-1.png]
 
 ## 🛠️ Deployment Guide
 
