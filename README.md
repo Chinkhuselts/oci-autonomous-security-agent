@@ -107,8 +107,9 @@ To deploy this architecture, you will need:
 
 ## 🤖 Processes and Screenshots
 
-(before)[docs/before-1.png]
-
+![before 1](docs/before-1.png)
+![after 1](docs/after-1.png)
+![grafana 1](docs/grafana-1.png)
 ## 🛠️ Deployment Guide
 
 ### 1. Configure IAM Policies
