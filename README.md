@@ -110,6 +110,7 @@ To deploy this architecture, you will need:
 ![before 1](docs/before-1.png)
 ![after 1](docs/after-1.png)
 ![grafana 1](docs/grafana-1.png)
+![grafana 3](docs/grafana-3.png)
 ## 🛠️ Deployment Guide
 
 ### 1. Configure IAM Policies
