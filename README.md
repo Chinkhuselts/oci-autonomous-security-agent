@@ -168,6 +168,6 @@ Implemented `urllib.parse.unquote()` to prevent OCI SDK `404 BucketNotFound` err
 
 ## 📝 License & Acknowledgments
 
-Developed as part of a Master's Thesis on Cloud Security and AI Automation.
+Developed as part of a Bachelor's Thesis on Cloud Security and AI Automation.
 
 Powered by Oracle Cloud Infrastructure and Groq.
